@@ -6,20 +6,27 @@ import { Task } from "./components/Task";
 import { FormEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-interface Task {
+export interface Task {
   id: string;
   text: string;
+  isFinished: boolean;
 }
 
 function App() {
   const [text, setText] = useState("");
   const [taskList, setTaskList] = useState<Task[]>([]);
+  const [isFinished] = useState(false);
 
   const createTask = (event: FormEvent) => {
     event.preventDefault();
 
-    setTaskList([...taskList, { id: uuidv4(), text: text }]);
+    setTaskList([
+      ...taskList,
+      { id: uuidv4(), text: text, isFinished: isFinished },
+    ]);
+
     setText("");
+    console.log(taskList);
   };
 
   return (
@@ -52,12 +59,15 @@ function App() {
           <section>
             <span className="tarefas-criadas">
               <p>Tarefas criadas</p>
-              <span>0</span>
+              <span>{taskList.length}</span>
             </span>
 
             <span className="concluidas">
               <p>Concluídas</p>
-              <span>0</span>
+              <span>
+                {taskList.filter((item) => item.isFinished === true).length} de{" "}
+                {taskList.length}
+              </span>
             </span>
           </section>
 
@@ -67,6 +77,7 @@ function App() {
                 key={item.id}
                 id={item.id}
                 text={item.text}
+                isFinished={item.isFinished}
                 taskList={taskList}
                 setTaskList={setTaskList}
               />
