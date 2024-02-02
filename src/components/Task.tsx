@@ -1,12 +1,26 @@
+import { Dispatch, SetStateAction } from "react";
 import "../global.css";
 import styles from "./Task.module.css";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-interface TaskProps {
+interface Task {
+  id: string;
   text: string;
 }
 
-export function Task({ text }: TaskProps) {
+interface TaskProps {
+  id: string;
+  text: string;
+  taskList: Task[];
+  setTaskList: Dispatch<SetStateAction<Task[]>>;
+}
+
+export function Task({ id, text, taskList, setTaskList }: TaskProps) {
+  const deleteTask = () => {
+    const listWithoutTheTask = taskList.filter((task) => task.id !== id);
+    setTaskList(listWithoutTheTask);
+  };
+
   return (
     <div className={styles.div}>
       <label className={styles.label}>
@@ -14,7 +28,7 @@ export function Task({ text }: TaskProps) {
         <p className={styles.p}>{text}</p>
       </label>
 
-      <span className={styles.trashBox}>
+      <span onClick={deleteTask} className={styles.trashBox}>
         <FaRegTrashAlt className={styles.trash} />
       </span>
     </div>
