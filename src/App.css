@@ -1,35 +1,125 @@
-:root {
-  --blue-dark: #1e6f9f;
-  --blue: #4ea8de;
-  --purple-dark: #5e60ce;
-  --purple: #8284fa;
+/* IMPORTANTE CITAR QUE HÁ ALGUMAS ESTILIZAÇÕES EM LINHA, NO PROPRIO CÓDIGO */
 
-  --gray-700: #0d0d0d;
-  --gray-600: #1a1a1a;
-  --gray-500: #262626;
-  --gray-400: #333333;
-  --gray-300: #808080;
-  --gray-200: #d9d9d9;
-  --gray-100: #f2f2f2;
-
-  --danger: #e25858;
+.container {
+  width: 40%;
+  margin: 50px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.container > header {
+  background-color: var(--gray-700);
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
-body {
-  font-family: Inter, sans-serif;
+h1 {
+  margin-bottom: 40px;
+  color: var(--blue);
+}
 
-  background-color: var(--gray-600);
+h1 > span {
+  color: var(--purple-dark);
+}
+
+.task {
+  width: 100%;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task input {
+  border: 1px solid var(--gray-700);
+  border-radius: 5px;
+  padding: 12px;
+  width: 85%;
+  background-color: var(--gray-500);
+  color: var(--gray-200);
+}
+
+.task input:focus {
+  outline: 1px solid var(--blue-dark);
+}
+
+.task button {
+  width: 14%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--blue-dark);
   color: var(--gray-100);
+  font-weight: 600;
+  cursor: pointer;
 }
 
-input,
-textarea,
-button {
-  font-family: Inter, sans-serif;
+.task button:hover {
+  background-color: var(--blue);
 }
+
+main {
+  width: 100%;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tarefas-criadas,
+.concluidas {
+  display: flex;
+  align-items: center;
+}
+
+.tarefas-criadas p {
+  color: var(--blue);
+  margin-right: 10px;
+  font-size: small;
+}
+
+.concluidas p {
+  color: var(--purple);
+  margin-right: 10px;
+  font-size: small;
+}
+
+.tarefas-criadas span,
+.concluidas span {
+  background-color: var(--gray-400);
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: small;
+}
+
+main > div {
+  border-top: 2px solid var(--gray-500);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.noTasks {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noTasks p {
+  color: var(--gray-200);
+}
+
+.noTasks span {
+  color: var(--gray-300);
+}
+
+/* IMPORTANTE CITAR QUE HÁ ALGUMAS ESTILIZAÇÕES EM LINHA, NO PROPRIO CÓDIGO */
