@@ -72,16 +72,35 @@ function App() {
           </section>
 
           <div>
-            {taskList.map((item) => (
-              <Task
-                key={item.id}
-                id={item.id}
-                text={item.text}
-                isFinished={item.isFinished}
-                taskList={taskList}
-                setTaskList={setTaskList}
-              />
-            ))}
+            {taskList.map(
+              (item) =>
+                item.isFinished === false && (
+                  <Task
+                    key={item.id}
+                    id={item.id}
+                    text={item.text}
+                    isFinished={item.isFinished}
+                    taskList={taskList}
+                    setTaskList={setTaskList}
+                  />
+                )
+            )}
+
+            <div className="finishedTasks">
+              {taskList.map(
+                (item) =>
+                  item.isFinished === true && (
+                    <Task
+                      key={item.id}
+                      id={item.id}
+                      text={item.text}
+                      isFinished={item.isFinished}
+                      taskList={taskList}
+                      setTaskList={setTaskList}
+                    />
+                  )
+              )}
+            </div>
           </div>
 
           {taskList.length === 0 && (
